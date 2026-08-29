@@ -29,8 +29,11 @@ type College = {
 
 async function getCollege(id: string): Promise<College | null> {
   try {
+    const baseUrl =
+      process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+
     const response = await fetch(
-      `http://localhost:3000/api/colleges/${id}`,
+      `${baseUrl}/api/colleges/${id}`,
       {
         cache: "no-store",
       }
